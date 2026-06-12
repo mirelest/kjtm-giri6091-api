@@ -5,37 +5,35 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-    app.setGlobalPrefix('api');
+  
+  app.setGlobalPrefix('api');
 
   app.enableVersioning({
     type: VersioningType.URI,
-    defaultVersion: '1',
+    defaultVersion: '1'
   });
 
   app.useGlobalPipes( new ValidationPipe({
     whitelist: true,
-    forbidNonWhitelisted:true,
+    forbidNonWhitelisted: true,
     transform: true
+  }));
 
-}));
 
   app.enableCors();
 
-  // Configure the Swagger docs
+  // Configuración de swagger docs
   const config = new DocumentBuilder()
-    .setTitle('Task Management API')
-    .setDescription('Gestion de tareas')
+    .setTitle('Task Manager API')
+    .setDescription('Gestión de tareas')
     .setVersion('1.0')
-    .addTag('Tasks') //Agrupar los endpoints relacionados bajo la etiqueta "Tasks"
+    .addTag('Tasks') // Agrupar los endpoints bajo la etiqueta 'Tasks'
     .build();
-
+  
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
   await app.listen(process.env.PORT ?? 3000);
-  console.log("API is running on: http://localhost:3000/api/v1");
+  console.log("API is running on: http:localhost:3000/api/v1");
 }
 bootstrap();
-
-//? npm i --save @nestjs/swagger
