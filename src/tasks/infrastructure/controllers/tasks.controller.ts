@@ -40,14 +40,14 @@ export class TasksController {
     @ApiParam({ name: 'id', description: 'ID de la tarea (UUID)' })
     @ApiResponse({ status: HttpStatus.OK, description: 'Tarea encontrada' })
     @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Tarea no encontrada' })
-    async findOne(@Param('id') id: string) {
+    async findOne(@Param('id') id: number) {
         return this.getTaskByIdUseCase.execute(id);
     }
 
     @Patch(':id')
     @ApiOperation({ summary: 'Actualizar la tarea por ID' })
     @ApiParam({ name: 'id', description: 'ID de la tarea (UUID)' })
-    async update(@Param("id") id: string, @Body() updateTaskDto: UpdateTaskDto) {
+    async update(@Param("id") id: number, @Body() updateTaskDto: UpdateTaskDto) {
         return this.updateTaskUseCase.execute(id, updateTaskDto);
     }
 
@@ -56,10 +56,14 @@ export class TasksController {
     @ApiOperation({ summary: 'Eliminar la tarea por ID' })
     @ApiParam({ name: 'id', description: 'ID de la tarea (UUID)' })
     @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'Tarea eliminada' })
-    async delete(@Param("id") id: string) {
+    async delete(@Param("id") id: number) {
         return this.deleteTaskUseCase.execute(id);
     }
 
 
 
 }
+
+//git add .
+//git commit -m "Implementacion completa del CRUD de tareas"
+//git push 

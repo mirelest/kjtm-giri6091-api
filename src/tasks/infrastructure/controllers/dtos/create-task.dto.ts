@@ -2,10 +2,10 @@ import { ApiAcceptedResponse, ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
 
 export class CreateTaskDto {
-     
-    @ApiProperty({ 
-        description: 'Descripción general de la tarea',
-        example: 'This is a description',
+
+    @ApiProperty({
+        description: 'Estado actual de la tarea',
+        example: 'This is Title',
         required: true,
     })
 
@@ -14,13 +14,12 @@ export class CreateTaskDto {
     @MinLength(3)
     @MaxLength(100)
     title!: string;
-
-    @ApiProperty({ 
+    
+    @ApiProperty({
         description: 'Descripción general de la tarea',
         example: 'This is a description',
         required: true,
     })
-    
     @IsString()
     @IsNotEmpty()
     @MinLength(3)

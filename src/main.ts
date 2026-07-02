@@ -37,3 +37,12 @@ async function bootstrap() {
   console.log("API is running on: http:localhost:3000/api/v1");
 }
 bootstrap();
+//! git add .
+//! git commit -m "fix: Escrutura de tareas y listado disponible"
+
+//? npm i --save @nestjs/swagger
+
+//! Uso de prima ORM
+//? npm i -D prisma
+//? npm i @prisma/client
+//? npx prisma init --datasource-provider postgresql
